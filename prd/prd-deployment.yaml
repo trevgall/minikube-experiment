@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prd-nginx
+  namespace: prd
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: prd-nginx
+  template:
+    metadata:
+      labels:
+        name: prd-nginx
+    spec:
+      serviceAccountName: default
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: prd-nginx
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

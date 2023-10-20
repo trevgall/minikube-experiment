@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prd-service
+  namespace: prd
+spec:
+  type: ClusterIP
+  selector:
+    name: prd-nginx
+  ports:
+  - name: prd-service
+    protocol: TCP
+    port: 8080
+    targetPort: 80
