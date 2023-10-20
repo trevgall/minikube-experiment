@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qal-nginx
+  namespace: qal
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      name: qal-nginx
+  template:
+    metadata:
+      labels:
+        name: qal-nginx
+    spec:
+      serviceAccountName: default
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: qal-nginx
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

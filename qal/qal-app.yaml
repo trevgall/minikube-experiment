@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: qal-nginx
+  namespace: qal
+  labels: 
+    name: qal-nginx
+spec:
+  containers:
+  - name: qal-nginx
+    image: nginx:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+    - containerPort: 80
