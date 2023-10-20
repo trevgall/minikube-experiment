@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: experiment-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /experiment-nginx
+        pathType: Prefix
+        backend:
+          service:
+            name: experiment-service
+            port:
+              number: 8080

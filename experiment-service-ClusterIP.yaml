@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: experiment-service
+spec:
+  type: ClusterIP
+  selector:
+    name: experiment-nginx
+  ports:
+  - name: experiment-service
+    protocol: TCP
+    port: 8080
+    targetPort: 80
